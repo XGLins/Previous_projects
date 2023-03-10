@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--引入jdbc.properties-->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+
+
+    <!--创建DataSource-->
+    <!--id:配置名称
+        class：确定要使用哪个数据源,我们这里使用Spring提供的jdbc，需要导入spring-jdbc的jar包
+                常用数据源有：c3p0 druid dbcp Spring提供的jdbc-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.name}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!--要和 Spring 一起使用 MyBatis，需要在 Spring 应用上下文中定义至少两样东西：一个 SqlSessionFactory 和至少一个数据映射器类-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!--绑定mybatis-config.xml文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+
+    <!--发现映射器接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指明mapper接口所在的包（例如：UserMapper.java所在的包）-->
+        <property name="basePackage" value="com.xing.mapper" />
+        <!--与上面一个配置产生关系-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+</beans>

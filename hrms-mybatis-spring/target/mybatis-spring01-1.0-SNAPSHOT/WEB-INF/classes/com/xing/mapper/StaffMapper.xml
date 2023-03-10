@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mapper表示根标签-->
+<mapper namespace="com.xing.mapper.StaffMapper">
+
+    <resultMap id="staffMap" type="Staff">
+        <id column="employeeId" property="employeeId"></id>
+        <result column="employeeName" property="employeeName"></result>
+        <result column="department" property="department"></result>
+        <result column="position" property="position"></result>
+    </resultMap>
+    <!--查询所有用户-->
+    <select id="findAllStaff" resultMap="staffMap">
+        select * from staff;
+    </select>
+
+    <!--查询某一个用户-->
+    <select id="findStaffById" parameterType="int" resultType="Staff">
+        select * from Staff where employeeId = #{employeeId};
+    </select>
+
+
+    <!--增加员工信息（员工入职）int addStaff(Staff staff);-->
+    <insert id="addStaff"  parameterType="Staff">
+        insert into staff values(null,#{employeeName},#{department},#{position});
+    </insert>
+
+    <!--删除员工信息（根据员工的编号，操作员工离职）int deleteStaff(int id);-->
+    <delete id="deleteStaff" parameterType="int">
+        delete from staff where employeeId = #{id};
+    </delete>
+
+
+    <!--修改员工信息 int updateEmployeeById(Staff staff);-->
+    <update id="updateEmployeeById" parameterType="Staff">
+        update staff set department = #{department},position = #{position} where employeeId=#{employeeId}
+    </update>
+
+    <!--//分页查询 List<Staff> getStaffByLimit(Map<String,Object> map);-->
+    <select id="getStaffByLimit" resultType="Staff">
+        select * from staff limit #{startIndex},#{pageSize};
+    </select>
+
+
+</mapper>

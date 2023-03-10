@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--mapper表示根标签-->
+<mapper namespace="com.xing.mapper.UserMapper">
+
+    <!--
+        mapper接口和映射文件要保持一致
+        1.mapper接口的全类名和映射文件namespace一致
+        2.mapper接口中的方法的方法名要和映射文件中的sql的id保持一致
+    -->
+
+    <resultMap id="userMap" type="com.xing.domain.User">
+        <id column="username" property="userName"/>
+        <result column="password" property="passWord"/>
+    </resultMap>
+
+    <!--//查找管理员 Boolean findUserById();-->
+    <select id="findUserById" resultMap="userMap">
+        select * from user where username = #{userName} and password = #{passWord}
+    </select>
+
+
+</mapper>
