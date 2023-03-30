@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>成员管理</title>
+    <!-- 引入bootstrap -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <!-- 引入JQuery  bootstrap.js-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        th {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 顶栏 -->
+    <div class="container" id="top">
+        <div class="row">
+            <div class="col-md-12">
+                <!--导航条-->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example" aria-expanded="true">
+                            <span class="sr-only"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        　 <a href="#" class="navbar-brand">社团成员信息管理系统</a>
+                        　</div>
+                    <form action="#" class="navbar-form navbar-right" role="search">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" style="margin-right: 20px; ">
+                                <span class="glyphicon glyphicon-user">Alice</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="javascript:void(0)">
+                                        <span class="glyphicon glyphicon-cog pull-right"></span> 修改个人信息
+                                    </a>
+                                </li>
+                                <li role="presentation" class="divider"></li>
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="javascript:void(0)">
+                                        <span class="glyphicon glyphicon-off pull-right"></span>注销
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 中间主体 -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="collapse navbar-collapse" style="padding: 0;" id="bs-example">
+                    <ul class="nav nav-pills nav-stacked" id="nav">
+                        <li>
+                            <a href="./index.html">操作首页<span
+                                    class="glyphicon glyphicon-folder-open pull-right"></span></a>
+                        </li>
+                        <li>
+                            <a href="./edit.html">部门管理<span class="glyphicon glyphicon-equalizer pull-right"></span></a>
+                        </li>
+                        <li>
+                            <a href="./show.html">成员管理<span class="glyphicon glyphicon-user pull-right"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">成员统计<span
+                                    class="glyphicon glyphicon-pencil pull-right"></span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)">退出系统<span
+                                    class="glyphicon glyphicon-log-out pull-right"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <h1 class="col-md-4">成员信息管理</h1>
+                            <div class="col-md-5" style="margin-top: 26px;">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="请输入查询" name="search">
+                                    <span class="input-group-addon btn" id="sub"><input style="border: 0;" type="submit"
+                                            value="搜索"></span>
+                                </div>
+                            </div>
+                            <button class="btn btn-success col-md-offset-1 col-md-2" style="margin-top: 26px"
+                                onClick="void(0)">
+                                添加成员信息
+                                <sapn class="glyphicon glyphicon-plus" />
+                            </button>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped table-hover" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th>学号</th>
+                                <th>姓名</th>
+                                <th>电话</th>
+                                <th>角色</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td>1001</td>
+                                    <td>Alice</td>
+                                    <td>19938001234</td>
+                                    <td>管理员</td>
+                                    <td>
+                                        <button class="btn btn-default btn-xs btn-info" onClick="void(0)">修改</button>
+                                        <button class="btn btn-default btn-xs btn-danger"
+                                            onClick="deleteById(1);">删除</button>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <div class="panel-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $("#nav li:nth-child(3)").addClass("active");
+        function deleteById(id) {
+            if (confirm("删除该用户会同时删除已选课程，确定删除吗？") == true) {
+                location.href = "javascript:void(0)";
+            } else {
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
