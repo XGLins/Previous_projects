@@ -8,12 +8,18 @@ import java.io.IOException;
 
 public class SecurityFilter implements Filter {
     @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
+    @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse
             servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         //向下转型
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
         HttpSession session = request.getSession();
         //判断是否登录
         if (session.getAttribute("currentUser") == null) {
@@ -22,5 +28,10 @@ public class SecurityFilter implements Filter {
                     response);
         }
         filterChain.doFilter(request, response);
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }

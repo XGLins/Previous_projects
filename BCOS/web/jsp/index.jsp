@@ -6,18 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>$Title$</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<h1 style="text-align: center">欢迎访问！</h1>--%>
-<%--<h2>--%>
-<%--        <a href="LoginServlet.do">LoginServlet乱码测试</a>--%>
-<%--</h2>--%>
-
-<%--</body>--%>
-<%--</html>--%>
 
 <!DOCTYPE html>
 <html>

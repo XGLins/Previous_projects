@@ -3,7 +3,14 @@ package com.dingli.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
+
 public class CEF implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
+    }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse
             servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -14,5 +21,10 @@ public class CEF implements Filter {
 
         //将请求转发给过滤器链下一个filter
         filterChain.doFilter(servletRequest, servletResponse);
+    }
+
+    @Override
+    public void destroy() {
+
     }
 }

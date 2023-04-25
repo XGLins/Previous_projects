@@ -14,7 +14,7 @@
 <head>
     <title>成员管理</title>
     <!-- 引入bootstrap -->
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
     <!-- 引入JQuery  bootstrap.js-->
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
